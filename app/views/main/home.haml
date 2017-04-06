@@ -1,0 +1,7 @@
+%h1 Hola #{current_user.name}
+%p Estas son tus últimas notificaciones:
+%p Este es un vistazo rápido de tus últimos objetivos:
+%p Estas son tus tareas para el club 1:
+%p Estas son tus tareas para el club 2:
+-if user_signed_in?
+  =link_to "Cerrar sesión", destroy_user_session_path, method: :delete

@@ -1,0 +1,71 @@
+-# Barra superior
+.navbar-fixed
+
+  %nav
+    .nav-wrapper
+      = link_to "Ludere", root_path, :class => "brand-logo center"
+      %ul{:class=> "left", :id => "nav-mobile"}
+        - if user_signed_in?
+          %li
+            %a{:class => 'buttonc', "data-activates" => "slide-out", :href => "/"}
+              %i{:class => "material-icons"} menu        
+
+-#Barra lateral
+
+%ul{:id=>"slide-out", :class=>"side-nav"}
+  - if user_signed_in?
+    %li
+      .userView
+        .background
+          =image_tag("back4.jpg")
+          /%img{:src => "http://www.liocreativo.com/wp-content/uploads/2014/03/fondo-11.jpg"}
+        %a{:href=>'', :class => "tooltipped", "data-tooltip" => "Ver perfil personal"}
+          /Reparar cuando se instale Paperclip
+          %img{:class=> 'circle', :src=>'https://pbs.twimg.com/profile_images/815713132/Snapshot_20091212_1.jpg'}
+        %a{:href => ''}
+          %span{:class=>'white-text name'}
+            =current_user.name
+        %a{:href => ''}
+          %span{:class => 'white-text email'}
+            =current_user.email
+    .row
+      %div{:class => "col s4"}
+        %li
+          %a{:href=>'', :class => "tooltipped", "data-tooltip" => "Mensajería"}
+            %i{:class => 'material-icons'}email
+      %div{:class => "col s4"}
+        %li
+          %a{:href=>'', :class => "tooltipped", "data-tooltip" => "Amigos"}
+            %i{:class => 'material-icons'}people
+      %div{:class => "col s4"}
+        %li
+          =link_to raw('<i class="material-icons">clear</i>'), destroy_user_session_path, method: :delete, :class => "tooltipped", "data-tooltip" => "Cerrar sesión"
+    %li
+      .divider
+    %li
+      %a{:href=> "/clubs/", :class => 'subheader'}
+        Clubes
+        %i{:class => 'material-icons'} dashboard
+    
+    %li
+      .divider
+    %li
+      %a{:class => 'subheader'}
+        Vencimientos
+        %i{:class => 'material-icons'} timelapse
+    %li
+      .divider
+    %li
+      %a{:class => 'subheader'}
+        %i{:class => 'material-icons'} notifications
+        Notificaciones
+:javascript
+  $(document).ready(function(){
+ 
+  // Abrir barra de navegación izquierda
+  $(".buttonc").sideNav();
+
+  });
+
+
+

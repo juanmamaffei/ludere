@@ -1,0 +1,51 @@
+%html
+  %head
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload' 
+    %link{:href => "https://fonts.googleapis.com/icon?family=Material+Icons", :rel =>"stylesheet"}
+  %body
+
+    %div{"class"=>"parallax-container"}
+      .parallax
+        = image_tag "chicos.jpg"
+      %div{:class => 'section container center'}
+        %h1 Ludere
+        =link_to "¡Ingresar!", new_user_session_path, :class => "btn waves-effect pulse"
+
+    :javascript
+      $(document).ready(function(){
+        $('.parallax').parallax();
+      });
+
+    %div{:class => "carousel carousel-slider center", :style => "height: 400px;"}
+      %div{:class => "carousel-item teal white-text", :href=>"#one!"}
+        %h2 Bienvenido
+        %p Ludere es una plataforma que ayuda tanto a aquellos que quieren aprender como a aquellos que quieren enseñar.
+        %p Si querés aprender alguno de los temas que desarrollan nuestros líderes, registráte, uníte a un club y empezá a cumplir los objetivos.
+        %p Si querés enseñar, podés crear tus propios clubes, establecer los objetivos a cumplir e invitar a los miembros que quieras.
+      %div{:class => "carousel-item  light-blue accent-1 white-text", :href=>"#two!"}
+        %h2 Gamificación
+        %p Durante tu estadía en Ludere, vas a sumar puntos, a superar niveles y a conseguir logros en cada club, y por supuesto, en la lista global.
+      %div{:class => "carousel-item teal accent-1 ", :href=>"#three!"}
+        %h2 Modalidades
+        %p Los objetivos son muy flexibles. Se pueden cumplir de manera completamente automatizada (esto es, sin ninguna interacción por parte del líder) y dirigida completamente por los líderes, pasando por muchos niveles intermedios.
+    :javascript
+      $(document).ready(function(){
+        $('.carousel').carousel();
+        $('.carousel.carousel-slider').carousel({fullWidth: true});
+      });
+      autoplay()   
+      function autoplay() {
+        $('.carousel').carousel('next');
+        setTimeout(autoplay, 4500);
+      }
+    .page-footer
+      .row
+        .col.s12.m4
+          Col1
+        .col.s6.m4
+          .h2 ¡Seguínos!
+          
+        .col.s6.m4
+          Col3

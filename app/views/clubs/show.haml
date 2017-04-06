@@ -1,0 +1,90 @@
+%div{:class=> "parallax-container", :style=> "height: 30%"}
+  %h2.right
+    = @club.nombre
+  %p
+    -if @club.publico?
+      %i{:class => "tooltipped material-icons", "data-tooltip" => "Club público: cualquier usuario registrado puede ver su contenido"} public
+    -if @club.cupoabierto?
+      %i{:class => "tooltipped material-icons", "data-tooltip" => "Cupo abierto: podés unirte libremente sin pedir permiso al líder"} group_add
+    -if current_user==@club.lider
+      =link_to raw("<i class='material-icons'>create</i>"), edit_club_path(@club)
+  .parallax
+    /= image_tag @club.portada
+    = image_tag("chicos.jpg")
+%div{:class=> "row section white", :style => "height: 55%"}
+  .col.s12.m3.grey
+    Objetivos
+  .col.s12.m5.grey.darken-1
+    Posteos
+    .p
+      = @club.desc
+    .p
+      El líder del club es:
+      = @club.lider
+
+  .col.s12.m4.blue
+    %h2 Miembros
+    %ul.collection
+      %li.collection-item.avatar
+        %img{:src=> "", :class=> "circle"}
+        %span.title
+          Juancito
+        %p
+          %i.material-icons stars
+          245
+          |
+          %i.material-icons work
+          318
+        %a.secondary-content
+          %i.material-icons grade
+          %i.material-icons grade
+          %i.material-icons grade
+    %ul.collection
+      %li.collection-item.avatar
+        %img{:src=> "", :class=> "circle"}
+        %span.title
+          %b
+            Juancito
+        %p
+          %i.material-icons stars
+          245
+          |
+          %i.material-icons work
+          318
+        %a.secondary-content
+          %i.material-icons grade
+          %i.material-icons grade
+    %ul.collection
+      %li.collection-item.avatar
+        %img{:src=> "", :class=> "circle"}
+        %span.title
+          Juancito
+        %p
+          %i.material-icons stars
+          245
+          |
+          %i.material-icons work
+          318
+        %a.secondary-content
+          %i.material-icons grade
+          %i.material-icons grade
+          %i.material-icons grade
+
+    
+  :javascript
+    $(document).ready(function(){
+      $('.parallax').parallax();
+    });
+
+
+
+<p>
+<strong>Publico:</strong>
+<%= @club.publico %>
+</p>
+
+<p>
+<strong>Cupoabierto:</strong>
+<%= @club.cupoabierto %>
+</p>
+

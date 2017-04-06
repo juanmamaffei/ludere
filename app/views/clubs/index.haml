@@ -1,0 +1,54 @@
+.section.white
+  .row.container
+    .h2 Filtros
+     
+    .chip
+      Abiertos
+      %i{:class=>"close material-icons"}close
+    .chip
+      No abiertos
+      %i{:class=>"close material-icons"}close
+    .chip
+      Matemática
+      %i{:class=>"close material-icons"}close
+    .chip
+      Informática
+      %i{:class=>"close material-icons"}close
+
+.container
+  .row.divider
+  .row.white.z-depth-5
+    -@clubs.each do |club|
+      .card.col.s12.m4.hoverable
+        .card-image
+          /-if club.portada==nil
+          /  %img{:src=> "http://materializecss.com/images/sample-1.jpg"}
+          /-else
+          /  =image_tag club.portada
+          %img{:src=> "http://materializecss.com/images/sample-1.jpg"}
+          %span{:class=> "card-title"}
+            = club.nombre
+        .card-content
+          .p
+            = club.desc
+          .divider
+          .p
+            Liderado por:
+            .chip
+              /Reparar para que haga una consulta a la BD y devuelva el nombre, en vez del user_id
+              = club.lider
+          .divider
+          .p.center
+            -if club.publico?
+              %i{:class => "tooltipped material-icons", "data-tooltip" => "Club público: cualquier usuario registrado puede ver su contenido"} public
+            -if club.cupoabierto?
+              %i{:class => "tooltipped material-icons", "data-tooltip" => "Cupo abierto: podés unirte libremente sin pedir permiso al líder"}group_add
+        .card-action.center
+          = link_to 'Entrar', club
+          / Si es el lider, editar y eliminar
+          -if current_user==club.lider
+            = link_to 'Editar', edit_club_path(club)
+            = link_to 'Eliminar', club, method: :delete, data: { confirm: '¿Estás seguro?' }
+
+
+
