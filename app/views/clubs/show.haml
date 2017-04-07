@@ -6,7 +6,7 @@
       %i{:class => "tooltipped material-icons", "data-tooltip" => "Club público: cualquier usuario registrado puede ver su contenido"} public
     -if @club.cupoabierto?
       %i{:class => "tooltipped material-icons", "data-tooltip" => "Cupo abierto: podés unirte libremente sin pedir permiso al líder"} group_add
-    -if current_user==@club.lider
+    -if current_user.id==@club.lider
       =link_to raw("<i class='material-icons'>create</i>"), edit_club_path(@club)
   .parallax
     /= image_tag @club.portada
@@ -26,7 +26,7 @@
     %h2 Miembros
     %ul.collection
       %li.collection-item.avatar
-        %img{:src=> "", :class=> "circle"}
+        %img{:src=> "http://www.lavidalucida.com/wp-content/uploads/2012/10/manchas-en-la-cara.jpg", :class=> "circle"}
         %span.title
           Juancito
         %p
@@ -41,7 +41,7 @@
           %i.material-icons grade
     %ul.collection
       %li.collection-item.avatar
-        %img{:src=> "", :class=> "circle"}
+        %img{:src=> "https://i.blogs.es/0c19f1/rostro/450_1000.jpg", :class=> "circle"}
         %span.title
           %b
             Juancito

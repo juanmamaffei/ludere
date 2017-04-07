@@ -46,9 +46,9 @@
         .card-action.center
           = link_to 'Entrar', club
           / Si es el lider, editar y eliminar
-          -if current_user==club.lider
-            = link_to 'Editar', edit_club_path(club)
-            = link_to 'Eliminar', club, method: :delete, data: { confirm: '¿Estás seguro?' }
+          -if current_user.id==club.lider
+            = link_to raw('<i class="material-icons">create</i>'), edit_club_path(club)
+            = link_to raw('<i class="material-icons">delete</i>'), club, method: :delete, data: { confirm: '¿Estás seguro?' }
 
 
 
