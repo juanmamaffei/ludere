@@ -1,0 +1,14 @@
+=form_for(@post) do |f|
+  -if @post.errors.any?
+    %div{:id=>"error_explanation"}
+      %h2
+        =pluralize(@post.errors.count, "error")
+        %ul
+          -@post.errors.full_messages.each do |message|
+            %li
+              =message
+  .input-field.col.s12
+    %i.material-icons.prefix mode_edit
+    %label{:for => "body"} ¿Qué pensás? Compartílo con el club
+    =f.text_area :body, :id => "body", :class => "materialize-textarea"
+  =f.submit "Compartir", :class => "a waves-effect waves-light btn right"

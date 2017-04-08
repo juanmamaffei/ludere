@@ -12,18 +12,14 @@
     /= image_tag @club.portada
     = image_tag("chicos.jpg")
 %div{:class=> "row section white", :style => "height: 55%"}
-  .col.s12.m3.grey
+  .scrollable.col.s12.m3.grey
     Objetivos
-  .col.s12.m5.grey.darken-1
-    Posteos
-    .p
-      = @club.desc
-    .p
-      El líder del club es:
-      = @club.lider
+  .scrollable.col.s12.m5
+    =render "posts/form"
+    #posts
+    
 
-  .col.s12.m4.blue
-    %h2 Miembros
+  .scrollable.col.s12.m4
     %ul.collection
       %li.collection-item.avatar
         %img{:src=> "http://www.lavidalucida.com/wp-content/uploads/2012/10/manchas-en-la-cara.jpg", :class=> "circle"}

@@ -4,3 +4,8 @@
 body {
     background: linear-gradient(45deg, #fafafa, #e3f2fd);
   }
+ .scrollable{
+   overflow-y:scroll;
+   height:100%;
+   
+ }

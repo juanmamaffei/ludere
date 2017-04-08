@@ -1,0 +1,18 @@
+= form_for @post,remote: true do |f|
+  -if @post.errors.any?
+    #error_explanation
+      %p
+        =params[:body]
+        =params[:club_id]
+        =pluralize(@post.errors.count, "error")
+        %ul
+          -@post.errors.full_messages.each do |message|
+            %li
+              =message
+  .input-field.col.s12
+    %i.material-icons.prefix mode_edit
+    %label{:for => "body"} ¿Qué pensás? Compartílo con el club
+    =f.text_area :body, :id => "body", :class => "materialize-textarea"
+    =f.hidden_field("nome_token_soygiordano", :value => (params[:id].to_i)*104723)
+
+  =f.submit "Compartir", :class => "a waves-effect waves-light btn right"
