@@ -19,13 +19,13 @@
         .background
           =image_tag("back4.jpg")
           /%img{:src => "http://www.liocreativo.com/wp-content/uploads/2014/03/fondo-11.jpg"}
-        %a{:href=>'', :class => "tooltipped", "data-tooltip" => "Ver perfil personal"}
+        %a{:href=> user_path(current_user), :class => "tooltipped", "data-tooltip" => "Ver perfil personal"}
           /Reparar cuando se instale Paperclip
           %img{:class=> 'circle', :src=>'https://pbs.twimg.com/profile_images/815713132/Snapshot_20091212_1.jpg'}
-        %a{:href => ''}
+        %a{:href => user_path(current_user)}
           %span{:class=>'white-text name'}
             =current_user.name
-        %a{:href => ''}
+        %a{:href => user_path(current_user)}
           %span{:class => 'white-text email'}
             =current_user.email
     .row
@@ -43,10 +43,14 @@
     %li
       .divider
     %li
-      %a{:href=> "/clubs/", :class => 'subheader'}
+      %a{:href=> clubs_path}
         Clubes
         %i{:class => 'material-icons'} dashboard
-    
+    /for con clubes
+    /%li
+    /  %a{:href=> club_path(:iddelclub)}
+    /    Club 1
+
     %li
       .divider
     %li

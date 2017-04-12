@@ -1,0 +1,38 @@
+.container
+  .row.divider
+  .row.white.z-depth-5
+    .col.s6
+      %img{:class=> 'circle responsive-img', :src=>'https://pbs.twimg.com/profile_images/815713132/Snapshot_20091212_1.jpg'}
+    .col.s6
+      .row
+        %p
+          %strong Nombre:
+          =@user.name
+        %p
+          %strong Apellido:
+          =@user.lastname
+        %p
+          %strong Correo electrónico:
+          =@user.email
+        %p
+          %strong DNI:
+          =@user.dni
+        %p
+          %strong Autobiografía:
+          %br
+          =@user.bio
+  .row.white.z-depth-5
+    .collection
+      %a.collection-item{:href=> "#!"}
+        %span.badge=@user.posts.count
+        Posteos realizados
+        
+      %a.collection-item{:href=> "#!"}
+        %span.badge
+        Clubes a los que pertenece:
+      %a.collection-item{:href=> "#!"}
+        %span.badge
+        Amigos
+      %a.collection-item{:href=> "#!"}
+        %span.badge
+        Logros

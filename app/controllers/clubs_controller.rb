@@ -11,6 +11,7 @@ class ClubsController < ApplicationController
   # GET /clubs/1.json
   def show
     @post = Post.new
+    @posts = Post.where(club_id: set_club).order('created_at DESC')
   end
 
   # GET /clubs/new
