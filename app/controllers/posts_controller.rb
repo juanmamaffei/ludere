@@ -32,8 +32,8 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.js { render :show}
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        #format.js { render :show}
+        format.html { redirect_to club_path(@post.club_id), notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new}

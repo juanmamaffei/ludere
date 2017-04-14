@@ -22,6 +22,14 @@
 #  provider               :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  avatar_file_name       :string
+#  avatar_content_type    :string
+#  avatar_file_size       :integer
+#  avatar_updated_at      :datetime
+#  cover_file_name        :string
+#  cover_content_type     :string
+#  cover_file_size        :integer
+#  cover_updated_at       :datetime
 #
 
 class User < ApplicationRecord
@@ -31,6 +39,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
 
   has_many :posts
+
+  has_attached_file :avatar, styles: {thumb: "100x100", medium: "300x300"}, default_url:":style/missing.png"
+  has_attached_file :cover, styles: {thumb: "100x100", medium: "300x300"}, default_url:":style/missing_cover.jpg"
+
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*Z/
+  validates_attachment_content_type :cover, content_type: /\Aimage\/.*Z/
   
   def self.from_omniauth(auth)
   	

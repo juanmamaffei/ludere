@@ -1,26 +1,49 @@
+:javascript
+  $(document).ready(function() {
+    /* Activating Best In Place */
+    jQuery(".best_in_place").best_in_place();
+    $('.parallax').parallax();
+  });
+.parallax-container.tooltipped{:style=> "height: 30%", "data-tooltip" => "Es visible para todos los usuarios"}
+  .parallax
+    = image_tag(@user.cover.url)
 .container
   .row.divider
   .row.white.z-depth-5
-    .col.s6
-      %img{:class=> 'circle responsive-img', :src=>'https://pbs.twimg.com/profile_images/815713132/Snapshot_20091212_1.jpg'}
+    .col.s6.tooltipped{"data-tooltip"=>"Es visible para tus amigos"}
+      = image_tag(@user.avatar.url, class: "responsive-img z-depth-2")
     .col.s6
       .row
-        %p
-          %strong Nombre:
-          =@user.name
-        %p
-          %strong Apellido:
-          =@user.lastname
-        %p
-          %strong Correo electrónico:
-          =@user.email
-        %p
-          %strong DNI:
-          =@user.dni
-        %p
-          %strong Autobiografía:
-          %br
-          =@user.bio
+        %p.tooltipped{"data-tooltip"=>"Es visible para todos los usuarios registrados"}
+          %strong Nombre
+          .grey.lighten-5
+            -if current_user==@user
+              .material-icons edit
+            = best_in_place_if current_user==@user, @user, :name, :place_holder => "-Clic para modificar-"
+        %p.tooltipped{"data-tooltip"=>"Sólo es visible para tus amigos"}
+          %strong Apellido
+          .grey.lighten-5
+            -if current_user==@user
+              .material-icons edit
+            = best_in_place_if current_user==@user, @user, :lastname, :place_holder => "-Clic para modificar-"
+        %p.tooltipped{"data-tooltip"=>"Pueden verlo SÓLO los líderes de clubes a los que pertenezcas"}
+          %strong Correo electrónico
+          .grey.lighten-5
+            -if current_user==@user
+              .material-icons edit
+            =best_in_place_if current_user==@user, @user, :email, :place_holder => "-Clic para modificar-"
+        %p.tooltipped{"data-tooltip"=>"Pueden verlo SÓLO los líderes de clubes a los que pertenezcas"}
+          %strong DNI
+          .grey.lighten-5
+            -if current_user==@user
+              .material-icons edit
+            =best_in_place_if current_user==@user, @user, :dni, :place_holder => "-Clic para modificar-"
+        %p.tooltipped{"data-tooltip"=>"Sólo es visible para tus amigos"}
+          %strong Autobiografía
+          .grey.lighten-5
+            -if current_user==@user
+              .material-icons edit
+            =best_in_place_if current_user==@user, @user, :bio, :as => :textarea, :place_holder => "-Clic para modificar-"
   .row.white.z-depth-5
     .collection
       %a.collection-item{:href=> "#!"}

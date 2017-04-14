@@ -1,5 +1,6 @@
 class ClubsController < ApplicationController
   before_action :set_club, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:show, :index]
 
   # GET /clubs
   # GET /clubs.json
@@ -73,4 +74,10 @@ class ClubsController < ApplicationController
     def club_params
       params.require(:club).permit(:nombre, :desc, :lider, :publico, :cupoabierto, :portada)
     end
+    def authenticate_user!
+      unless user_signed_in?
+        redirect_to root_path, notice: "Primero debés iniciar sesión", status: :unauthorized
+      end     
+    end
 end
+
