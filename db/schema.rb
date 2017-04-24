@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170414160248) do
+ActiveRecord::Schema.define(version: 20170420052938) do
 
   create_table "clubs", force: :cascade do |t|
     t.string   "nombre"
@@ -21,6 +21,26 @@ ActiveRecord::Schema.define(version: 20170414160248) do
     t.string   "portada"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "goals", force: :cascade do |t|
+    t.string   "nombre"
+    t.text     "descripcion"
+    t.datetime "finaliza"
+    t.string   "video"
+    t.string   "pdf"
+    t.string   "link1"
+    t.string   "link2"
+    t.boolean  "abrevencido"
+    t.boolean  "evaluavencido"
+    t.integer  "peso"
+    t.string   "evaluacion_file_name"
+    t.string   "evaluacion_content_type"
+    t.integer  "evaluacion_file_size"
+    t.datetime "evaluacion_updated_at"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "club_id"
   end
 
   create_table "posts", force: :cascade do |t|

@@ -21,7 +21,7 @@
           /%img{:src => "http://www.liocreativo.com/wp-content/uploads/2014/03/fondo-11.jpg"}
         %a{:href=> user_path(current_user), :class => "tooltipped", "data-tooltip" => "Ver perfil personal"}
           /Reparar cuando se instale Paperclip
-          %img{:class=> 'circle', :src=>'https://pbs.twimg.com/profile_images/815713132/Snapshot_20091212_1.jpg'}
+          = image_tag(current_user.avatar.url, class: "circle")
         %a{:href => user_path(current_user)}
           %span{:class=>'white-text name'}
             =current_user.name

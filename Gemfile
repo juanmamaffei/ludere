@@ -49,6 +49,7 @@ gem 'materialize-sass'
 gem 'annotate'
 gem 'best_in_place', '~> 3.1'
 gem 'paperclip', '~> 4.3', '>= 4.3.6'
+gem 'remotipart', github:"urielhdz/remotipart"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

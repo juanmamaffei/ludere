@@ -23,7 +23,7 @@ class ProfilesController < ApplicationController
 			@user = User.find(params[:id])			
 		end
 		def user_params
-			params.require(:user).permit(:email, :dni, :lastname, :name, :bio)
+			params.require(:user).permit(:email, :dni, :lastname, :name, :bio, :avatar, :cover)
 		end
 		def authenticate_owner!
 			if current_user != @user

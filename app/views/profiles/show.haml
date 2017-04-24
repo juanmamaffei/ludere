@@ -4,14 +4,17 @@
     jQuery(".best_in_place").best_in_place();
     $('.parallax').parallax();
   });
-.parallax-container.tooltipped{:style=> "height: 30%", "data-tooltip" => "Es visible para todos los usuarios"}
-  .parallax
+.parallax-container.tooltipped.file-activate{:style=> "height: 30%", "data-tooltip" => "Es visible para todos los usuarios", for: "#user_cover"}
+  .parallax.file-activate{for: "#user_cover"}
     = image_tag(@user.cover.url)
 .container
   .row.divider
   .row.white.z-depth-5
-    .col.s6.tooltipped{"data-tooltip"=>"Es visible para tus amigos"}
+    .col.s6.tooltipped.relative{"data-tooltip"=>"Es visible para tus amigos"}
       = image_tag(@user.avatar.url, class: "responsive-img z-depth-2")
+      .absolute
+        %a.btn-floating.btn-large.waves-effect.waver-light
+          %i.material-icons.file-activate{for: "#user_avatar"} edit
     .col.s6
       .row
         %p.tooltipped{"data-tooltip"=>"Es visible para todos los usuarios registrados"}
@@ -38,6 +41,12 @@
             -if current_user==@user
               .material-icons edit
             =best_in_place_if current_user==@user, @user, :dni, :place_holder => "-Clic para modificar-"
+          =form_for @user, remote: true do |f|
+            %div{style:"display:none"}
+              =f.file_field :cover, class: "remotipart"
+          =form_for @user, remote: true do |f|
+            %div{style:"display:none"}
+              =f.file_field :avatar, class: "remotipart"
         %p.tooltipped{"data-tooltip"=>"Sólo es visible para tus amigos"}
           %strong Autobiografía
           .grey.lighten-5
@@ -49,7 +58,6 @@
       %a.collection-item{:href=> "#!"}
         %span.badge=@user.posts.count
         Posteos realizados
-        
       %a.collection-item{:href=> "#!"}
         %span.badge
         Clubes a los que pertenece:

@@ -14,3 +14,15 @@
  *= require_tree
  */
 @import "materialize";
+
+.absolute{
+	position: absolute;
+	bottom:0px;
+	right:0px;
+}
+.relative{
+	position:relative;
+}
+.altozindex{
+	z-index:1000;
+}

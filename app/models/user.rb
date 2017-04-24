@@ -43,9 +43,12 @@ class User < ApplicationRecord
   has_attached_file :avatar, styles: {thumb: "100x100", medium: "300x300"}, default_url:":style/missing.png"
   has_attached_file :cover, styles: {thumb: "100x100", medium: "300x300"}, default_url:":style/missing_cover.jpg"
 
-  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*Z/
-  validates_attachment_content_type :cover, content_type: /\Aimage\/.*Z/
-  
+  #validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*Z/
+  #validates_attachment_content_type :cover, :content_type => /\Aimage\/.*Z/
+
+  validates_attachment_content_type :avatar, :content_type => /^image\/(jpg|jpeg|pjpeg|png|x-png|gif)$/, :message => 'Tipo no admitido'
+  validates_attachment_content_type :cover, :content_type =>  /^image\/(jpg|jpeg|pjpeg|png|x-png|gif)$/, :message => 'Tipo no admitido'
+
   def self.from_omniauth(auth)
   	
   	where(provider: auth["provider"],uid: auth["uid"]).first_or_create do |user|

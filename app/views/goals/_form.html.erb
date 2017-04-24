@@ -1,0 +1,72 @@
+<%= form_for(goal) do |f| %>
+  <% if goal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(goal.errors.count, "error") %> prohibited this goal from being saved:</h2>
+
+      <ul>
+      <% goal.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre %>
+    <%= f.text_field :nombre %>
+  </div>
+
+  <div class="field">
+    <%= f.label :descripcion %>
+    <%= f.text_area :descripcion %>
+  </div>
+
+  <div class="field">
+    <%= f.label :finaliza %>
+    <%= f.datetime_select :finaliza %>
+  </div>
+
+  <div class="field">
+    <%= f.label :video %>
+    <%= f.text_field :video %>
+  </div>
+
+  <div class="field">
+    <%= f.label :pdf %>
+    <%= f.text_field :pdf %>
+  </div>
+
+  <div class="field">
+    <%= f.label :link1 %>
+    <%= f.text_field :link1 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :link2 %>
+    <%= f.text_field :link2 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :abrevencido %>
+    <%= f.check_box :abrevencido %>
+  </div>
+
+  <div class="field">
+    <%= f.label :evaluavencido %>
+    <%= f.check_box :evaluavencido %>
+  </div>
+
+  <div class="field">
+    <%= f.label :peso %>
+    <%= f.number_field :peso %>
+  </div>
+
+  <div class="field">
+    <%= f.label :evaluacion %>
+    <%= f.text_field :evaluacion %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

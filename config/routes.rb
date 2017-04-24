@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :goals
   resources :posts
   resources :clubs
   resources :profiles, as: :users, only: [:show, :update]

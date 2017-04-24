@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/urielhdz/remotipart.git
+  revision: aa0386690bd224e05b4d05a1f268db28fb11a5a3
+  specs:
+    remotipart (1.2.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -257,6 +263,7 @@ DEPENDENCIES
   paperclip (~> 4.3, >= 4.3.6)
   puma (~> 3.0)
   rails (~> 5.0.2)
+  remotipart!
   rspec (~> 3.6.0.beta2)
   sass-rails (~> 5.0)
   shoulda-matchers

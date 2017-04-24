@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Goals</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Descripcion</th>
+      <th>Finaliza</th>
+      <th>Video</th>
+      <th>Pdf</th>
+      <th>Link1</th>
+      <th>Link2</th>
+      <th>Abrevencido</th>
+      <th>Evaluavencido</th>
+      <th>Peso</th>
+      <th>Evaluacion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @goals.each do |goal| %>
+      <tr>
+        <td><%= goal.nombre %></td>
+        <td><%= goal.descripcion %></td>
+        <td><%= goal.finaliza %></td>
+        <td><%= goal.video %></td>
+        <td><%= goal.pdf %></td>
+        <td><%= goal.link1 %></td>
+        <td><%= goal.link2 %></td>
+        <td><%= goal.abrevencido %></td>
+        <td><%= goal.evaluavencido %></td>
+        <td><%= goal.peso %></td>
+        <td><%= goal.evaluacion %></td>
+        <td><%= link_to 'Show', goal %></td>
+        <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
+        <td><%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Goal', new_goal_path %>
